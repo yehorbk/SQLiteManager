@@ -17,6 +17,8 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Modality;
@@ -98,8 +100,10 @@ public class MainWindowController implements Initializable, WindowController {
     
     private void openTab(Event event) {
         String tabName = ((TitledPane)event.getSource()).getText();
-        mainTabPane.getTabs().add(new Tab(tabName));
         currentDbName = tabName;
+        if(((MouseEvent)event).getButton() != MouseButton.SECONDARY) {
+            mainTabPane.getTabs().add(new Tab(tabName));
+        }
     }
 
 
@@ -121,6 +125,7 @@ public class MainWindowController implements Initializable, WindowController {
             Database database = new Database(file);
             localStorage.putDatabase(database);
             updateUI();
+            // TODO
         }
     }
     
@@ -160,16 +165,16 @@ public class MainWindowController implements Initializable, WindowController {
     
     @FXML
     public void createTableAction(ActionEvent actionEvent) {
-        System.out.println(currentDbName);
+        // TODO
     }
     
     @FXML
     public void showTableDataAction(ActionEvent actionEvent) {
-        System.out.println(currentDbName);
+        // TODO
     }
     
     @FXML
     public void closeTableAction(ActionEvent actionEvent) {
-        System.out.println(currentDbName);
+        // TODO
     }
 }
