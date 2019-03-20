@@ -84,7 +84,7 @@ public class MainWindowController implements Initializable, WindowController {
         }
     }
     
-    private boolean openFileChooser(String title, ExtensionFilter ...filters) {
+    private File openFileChooser(String title, ExtensionFilter ...filters) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(title);
         fileChooser.getExtensionFilters().addAll(filters);
@@ -92,7 +92,7 @@ public class MainWindowController implements Initializable, WindowController {
             new ExtensionFilter("All Files", "*.*"));
         
         File selectedFile = fileChooser.showOpenDialog(this.stage);
-        return selectedFile != null ? true : false;
+        return selectedFile;
     }
     
     private void openTab(Event event) {
@@ -114,8 +114,11 @@ public class MainWindowController implements Initializable, WindowController {
     public void openFileOnBtnClick(ActionEvent actionEvent) {
         String title = "Open Database";
         ExtensionFilter filter = new ExtensionFilter("Database files", "*.db");
-        if (openFileChooser(title, filter)) {
-            // TODO
+        File file = null;
+        if ((file = openFileChooser(title, filter)) != null) {
+            Database database = new Database(file);
+            localStorage.putDatabase(database);
+            updateUI();
         }
     }
     
@@ -123,7 +126,8 @@ public class MainWindowController implements Initializable, WindowController {
     public void importDbOnBtnClick(ActionEvent actionEvent) {
         String title = "Import Database";
         ExtensionFilter filter = new ExtensionFilter("SQL files", "*.sql");
-        if (openFileChooser(title, filter)) {
+        File file = null;
+        if ((file = openFileChooser(title, filter)) != null) {
             // TODO
         }
     }
@@ -145,7 +149,8 @@ public class MainWindowController implements Initializable, WindowController {
     public void importSettings(ActionEvent actionEvent) {
         String title = "Import Settings";
         ExtensionFilter filter = new ExtensionFilter("JSON files", "*.json");
-        if (openFileChooser(title, filter)) {
+        File file = null;
+        if ((file = openFileChooser(title, filter)) != null) {
             // TODO
         }
     }
