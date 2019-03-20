@@ -51,6 +51,7 @@ public class MainWindowController implements Initializable, WindowController {
     }
     
     private Stage stage;
+    private String currentDbName = "";
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -98,6 +99,7 @@ public class MainWindowController implements Initializable, WindowController {
     private void openTab(Event event) {
         String tabName = ((TitledPane)event.getSource()).getText();
         mainTabPane.getTabs().add(new Tab(tabName));
+        currentDbName = tabName;
     }
 
 
@@ -146,6 +148,7 @@ public class MainWindowController implements Initializable, WindowController {
         }
     }
     
+    @FXML
     public void importSettings(ActionEvent actionEvent) {
         String title = "Import Settings";
         ExtensionFilter filter = new ExtensionFilter("JSON files", "*.json");
@@ -153,5 +156,20 @@ public class MainWindowController implements Initializable, WindowController {
         if ((file = openFileChooser(title, filter)) != null) {
             // TODO
         }
+    }
+    
+    @FXML
+    public void createTableAction(ActionEvent actionEvent) {
+        System.out.println(currentDbName);
+    }
+    
+    @FXML
+    public void showTableDataAction(ActionEvent actionEvent) {
+        System.out.println(currentDbName);
+    }
+    
+    @FXML
+    public void closeTableAction(ActionEvent actionEvent) {
+        System.out.println(currentDbName);
     }
 }
