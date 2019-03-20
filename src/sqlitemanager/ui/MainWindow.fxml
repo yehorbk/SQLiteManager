@@ -20,8 +20,8 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#newFileOnBtnClick" text="New" />
-                <MenuItem mnemonicParsing="false" text="Open" />
-                <MenuItem mnemonicParsing="false" text="Import" />
+                <MenuItem mnemonicParsing="false" onAction="#openFileOnBtnClick" text="Open" />
+                <MenuItem mnemonicParsing="false" onAction="#importDbOnBtnClick" text="Import" />
                 <MenuItem mnemonicParsing="false" text="Export" />
                 <MenuItem mnemonicParsing="false" text="Save" />
                 <MenuItem mnemonicParsing="false" text="Close" />
@@ -30,27 +30,28 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Undo" />
-                  <MenuItem mnemonicParsing="false" text="Cut" />
-              <MenuItem mnemonicParsing="false" text="Copy" />
-                  <MenuItem mnemonicParsing="false" text="Paste" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
+                <MenuItem mnemonicParsing="false" text="Undo" />
+                <MenuItem mnemonicParsing="false" text="Cut" />
+                <MenuItem mnemonicParsing="false" text="Copy" />
+                <MenuItem mnemonicParsing="false" text="Paste" />
+                <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Service">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Open Comand Line" />
-                  <MenuItem mnemonicParsing="false" text="Import/Export Settings" />
-                  <MenuItem mnemonicParsing="false" text="Settings" />
-               </items>
-            </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Service">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-                  <MenuItem mnemonicParsing="false" text="Contact" />
-                  <MenuItem mnemonicParsing="false" text="Donate" />
+                <MenuItem mnemonicParsing="false" onAction = "#openCommandLine" text="Open Comand Line" />
+                <MenuItem mnemonicParsing="false" onAction = "#importSettings" text="Import Settings" />
+                  <MenuItem mnemonicParsing="false" text="Export Settings" />
+                <MenuItem mnemonicParsing="false" text="Settings" />
             </items>
-          </Menu>
+         </Menu>
+         <Menu mnemonicParsing="false" text="Help">
+            <items>
+                <MenuItem mnemonicParsing="false" text="About" />
+                <MenuItem mnemonicParsing="false" text="Contact" />
+                <MenuItem mnemonicParsing="false" text="Donate" />
+            </items>
+        </Menu>
         </menus>
       </MenuBar>
       <Accordion layoutY="27.0" prefHeight="373.0" prefWidth="131.0">

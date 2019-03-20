@@ -41,30 +41,6 @@ public class SQLiteManager extends Application {
         }
     }
     
-
-    public static void newFileDialog() {
-        
-         try {
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SQLiteManager.class.getResource("ui/NewFileDialog.fxml"));
-            Parent root = loader.load();
-            NewFileDialogController controller = loader.getController();
-
-            controller.setStage(primaryStage);
-            Scene scene = new Scene(root);
-
-            primaryStage.setTitle("SQLite Manager");
-            primaryStage.setScene(scene);
-            primaryStage.setFullScreenExitHint("");
-            primaryStage.show();
-        
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-        
-    }
-    
     public static void main(String[] args) {
         launch(args);
     }
