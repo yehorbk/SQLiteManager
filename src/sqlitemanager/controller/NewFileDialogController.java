@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sqlitemanager.localStorage;
+import sqlitemanager.model.Database;
 import sqlitemanager.model.WindowController;
 
 public class NewFileDialogController implements Initializable, WindowController {
@@ -30,7 +32,9 @@ public class NewFileDialogController implements Initializable, WindowController 
     
     @FXML
     public void okOnBtnClick(ActionEvent actionEvent) {
-        System.out.println(dbNameTextField.getText());
+        String name = dbNameTextField.getText();
+        Database db = new Database(name);
+        localStorage.putDatabase(db);
         this.stage.close();
     }
     
@@ -38,7 +42,5 @@ public class NewFileDialogController implements Initializable, WindowController 
     public void cancelOnBtnClick(ActionEvent actionEvent) {
         this.stage.close();
     }
-    
-    
     
 }

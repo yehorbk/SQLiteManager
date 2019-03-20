@@ -39,8 +39,8 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Service">
             <items>
-                <MenuItem mnemonicParsing="false" onAction = "#openCommandLine" text="Open Comand Line" />
-                <MenuItem mnemonicParsing="false" onAction = "#importSettings" text="Import Settings" />
+                <MenuItem mnemonicParsing="false" onAction="#openCommandLine" text="Open Comand Line" />
+                <MenuItem mnemonicParsing="false" onAction="#importSettings" text="Import Settings" />
                   <MenuItem mnemonicParsing="false" text="Export Settings" />
                 <MenuItem mnemonicParsing="false" text="Settings" />
             </items>
@@ -54,7 +54,7 @@
         </Menu>
         </menus>
       </MenuBar>
-      <Accordion layoutY="27.0" prefHeight="373.0" prefWidth="131.0">
+      <Accordion fx:id="dbsListAccordion" layoutY="27.0" prefHeight="373.0" prefWidth="131.0">
         <panes>
           <TitledPane animated="false" text="Users">
             <content>
@@ -73,7 +73,7 @@
           </TitledPane>
         </panes>
       </Accordion>
-      <TabPane layoutX="131.0" layoutY="27.0" prefHeight="373.0" prefWidth="469.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="mainTabPane" layoutX="131.0" layoutY="27.0" prefHeight="373.0" prefWidth="469.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Users.db">
             <content>

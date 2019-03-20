@@ -6,19 +6,49 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Accordion;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TitledPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sqlitemanager.localStorage;
+import sqlitemanager.model.Database;
 import sqlitemanager.model.WindowController;
 
 public class MainWindowController implements Initializable, WindowController {
+    
+    @FXML
+    private Accordion dbsListAccordion;
+    @FXML
+    private TabPane mainTabPane;
+    
+    
+    public void updateUI() {
+        dbsListAccordion.getPanes().clear();
+        
+        for (Database db : localStorage.getDatabasesList()) {
+            dbsListAccordion.getPanes().add(new TitledPane(db.getName(), null));
+        }
+        
+        for (TitledPane pane : dbsListAccordion.getPanes()) {
+            pane.setOnMouseClicked(new EventHandler<Event>() {
+                @Override
+                public void handle(Event event) {
+                    openTab(event);
+                }
+            });
+        }
+    }
     
     private Stage stage;
 
@@ -33,7 +63,6 @@ public class MainWindowController implements Initializable, WindowController {
     
     private void openDialogWindow(String url, String title) {
         try {
-            
             FXMLLoader loader = new FXMLLoader(sqlitemanager.SQLiteManager.class.getResource(url));
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -42,11 +71,14 @@ public class MainWindowController implements Initializable, WindowController {
             WindowController controller = loader.getController();
             controller.setStage(stage);
 
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setFullScreenExitHint("");
             stage.setTitle(title);
             stage.setScene(scene);  
-            stage.show();
-        
+            stage.showAndWait();
+            
+            updateUI();
+            
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -61,6 +93,11 @@ public class MainWindowController implements Initializable, WindowController {
         
         File selectedFile = fileChooser.showOpenDialog(this.stage);
         return selectedFile != null ? true : false;
+    }
+    
+    private void openTab(Event event) {
+        String tabName = ((TitledPane)event.getSource()).getText();
+        mainTabPane.getTabs().add(new Tab(tabName));
     }
 
 
