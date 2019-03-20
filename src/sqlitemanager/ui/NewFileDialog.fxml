@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="101.0" prefWidth="233.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="sqlitemanager.controller.NewFileDialogController">
+   <children>
+      <Button layoutX="128.0" layoutY="63.0" mnemonicParsing="false" text="OK" />
+      <TextField layoutX="70.0" layoutY="28.0" />
+      <Text layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+      <Button layoutX="167.0" layoutY="63.0" mnemonicParsing="false" text="Cancel" />
+   </children>
+</AnchorPane>
