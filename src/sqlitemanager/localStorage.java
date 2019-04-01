@@ -18,5 +18,18 @@ public class localStorage {
         return databasesList;
     }
     
+    public static void removeDatabase(Database db) {
+        databasesList.remove(db);
+    }
+    
+    public static Database getDatabaseByName(String name) {
+        for (Database database : databasesList) {
+            if (database.getName().equals(name)) {
+                return database;
+            }
+        }
+        return null;
+    }
+    
     
 }

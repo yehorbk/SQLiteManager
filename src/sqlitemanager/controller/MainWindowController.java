@@ -50,6 +50,8 @@ public class MainWindowController implements Initializable, WindowController {
                 }
             });
         }
+        
+        
     }
     
     private Stage stage;
@@ -140,6 +142,13 @@ public class MainWindowController implements Initializable, WindowController {
     }
     
     @FXML
+    public void closeOnBtnClick(ActionEvent actionEvent) {
+        Database db = localStorage.getDatabaseByName(currentDbName);
+        localStorage.removeDatabase(db);
+        updateUI();
+    }
+    
+    @FXML
     public void exitOnBtnClick(ActionEvent actionEvent) {
         System.exit(0);
     }
@@ -175,6 +184,6 @@ public class MainWindowController implements Initializable, WindowController {
     
     @FXML
     public void closeTableAction(ActionEvent actionEvent) {
-        // TODO
+        closeOnBtnClick(actionEvent);
     }
 }

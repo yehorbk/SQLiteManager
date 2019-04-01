@@ -25,7 +25,7 @@
                 <MenuItem mnemonicParsing="false" onAction="#importDbOnBtnClick" text="Import" />
                 <MenuItem mnemonicParsing="false" text="Export" />
                 <MenuItem mnemonicParsing="false" text="Save" />
-                <MenuItem mnemonicParsing="false" text="Close" />
+                <MenuItem mnemonicParsing="false" onAction="#closeTableAction" text="Close" />
                 <MenuItem mnemonicParsing="false" onAction="#exitOnBtnClick" text="Exit" />
             </items>
           </Menu>
@@ -76,9 +76,9 @@
          <contextMenu>
             <ContextMenu>
               <items>
-                <MenuItem mnemonicParsing="false" text="Create table" onAction = "#createTableAction" />
-                  <MenuItem mnemonicParsing="false" text="Show data" onAction = "#showTableDataAction" />
-                  <MenuItem mnemonicParsing="false" text="Close" onAction = "#closeTableAction" />
+                <MenuItem mnemonicParsing="false" onAction="#createTableAction" text="Create table" />
+                  <MenuItem mnemonicParsing="false" onAction="#showTableDataAction" text="Show data" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeTableAction" text="Close" />
               </items>
             </ContextMenu>
          </contextMenu>
