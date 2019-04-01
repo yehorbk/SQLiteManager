@@ -186,4 +186,11 @@ public class MainWindowController implements Initializable, WindowController {
     public void closeTableAction(ActionEvent actionEvent) {
         closeOnBtnClick(actionEvent);
     }
+    
+    @FXML
+    public void aboutShowPageAction(ActionEvent actionEvent) {
+        String url = "ui/AboutPage.fxml";
+        String title = "About";
+        openDialogWindow(url, title);
+    }
 }
