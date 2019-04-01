@@ -49,8 +49,8 @@
          <Menu mnemonicParsing="false" text="Help">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#aboutShowPageAction" text="About" />
-                <MenuItem mnemonicParsing="false" text="Contact" />
-                <MenuItem mnemonicParsing="false" text="Donate" />
+                <MenuItem mnemonicParsing="false" onAction="#contactShowPageAction" text="Contact" />
+                <MenuItem mnemonicParsing="false" onAction="#donateShowPageAction" text="Donate"/>
             </items>
         </Menu>
         </menus>

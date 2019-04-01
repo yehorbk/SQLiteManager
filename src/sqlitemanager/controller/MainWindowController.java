@@ -193,4 +193,18 @@ public class MainWindowController implements Initializable, WindowController {
         String title = "About";
         openDialogWindow(url, title);
     }
+    
+    @FXML
+    public void contactShowPageAction(ActionEvent actionEvent) {
+        String url = "ui/ContactPage.fxml";
+        String title = "Contact";
+        openDialogWindow(url, title);
+    }
+    
+    @FXML
+    public void donateShowPageAction(ActionEvent actionEvent) {
+        String url = "ui/DonatePage.fxml";
+        String title = "Donate";
+        openDialogWindow(url, title);
+    }
 }

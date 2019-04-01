@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="142.0" prefWidth="213.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="sqlitemanager.controller.ContactPageController">
+    <stylesheets>
+        <URL value="@/sqlitemanager/style/contactpage.css" />
+    </stylesheets>
+   <children>
+      <TextArea editable="false" layoutX="7.0" layoutY="14.0" prefHeight="117.0" prefWidth="200.0" text="Contact Information:&#10;&#10;Tel: +38(052)-32-79-567&#10;Fax: 8-812-327-7823&#10;&#10;Email: msqlitemgr@gmail.com" />
+   </children>
+</AnchorPane>
