@@ -173,6 +173,19 @@ public class MainWindowController implements Initializable, WindowController {
     }
     
     @FXML
+    public void exportSettings(ActionEvent actionEvent) {
+        
+    }
+    
+    @FXML
+    public void settingsShowPageAction(ActionEvent actionEvent) {
+        String url = "ui/SettingsPage.fxml";
+        String title = "Settings";
+        openDialogWindow(url, title);
+    }
+    
+    
+    @FXML
     public void createTableAction(ActionEvent actionEvent) {
         // TODO
     }

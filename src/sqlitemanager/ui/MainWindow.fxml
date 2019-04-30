@@ -43,7 +43,7 @@
                 <MenuItem mnemonicParsing="false" onAction="#openCommandLine" text="Open Comand Line" />
                 <MenuItem mnemonicParsing="false" onAction="#importSettings" text="Import Settings" />
                   <MenuItem mnemonicParsing="false" text="Export Settings" />
-                <MenuItem mnemonicParsing="false" text="Settings" />
+                <MenuItem mnemonicParsing="false" onAction="#settingsShowPageAction" text="Settings" />
             </items>
          </Menu>
          <Menu mnemonicParsing="false" text="Help">

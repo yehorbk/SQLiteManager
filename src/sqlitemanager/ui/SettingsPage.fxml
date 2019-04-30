@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sqlitemanager.controller.SettingsPageController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sqlitemanager.controller.SettingsPageController">
     <stylesheets>
-        <URL value="@/sqlitemanager/style/settingspage.css"/>
+        <URL value="@/sqlitemanager/style/settingspage.css" />
     </stylesheets>
+   <children>
+      <Label layoutX="30.0" layoutY="24.0" prefHeight="27.0" prefWidth="61.0" text="Theme">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Separator layoutX="31.0" layoutY="69.0" prefHeight="3.0" prefWidth="538.0" />
+      <Separator layoutX="32.0" layoutY="207.0" prefHeight="3.0" prefWidth="538.0" />
+      <Label layoutX="32.0" layoutY="161.0" prefHeight="27.0" prefWidth="74.0" text="Text Size">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="exampleTextArea" layoutX="32.0" layoutY="227.0" prefHeight="111.0" prefWidth="187.0" text="Example Text" />
+      <Slider fx:id="fontSizeSlider" layoutX="253.0" layoutY="227.0" max="22.0" min="4.0" prefHeight="27.0" prefWidth="316.0" value="12.0" />
+      <Label layoutX="253.0" layoutY="283.0" prefHeight="27.0" prefWidth="83.0" text="Font Style">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="420.0" layoutY="284.0" prefWidth="150.0" />
+      <RadioButton fx:id="selectDarkTheme" layoutX="37.0" layoutY="85.0" mnemonicParsing="false" text="Dark" />
+      <RadioButton fx:id="selectLightTheme" layoutX="37.0" layoutY="121.0" mnemonicParsing="false" text="Light" />
+      <Button layoutX="523.0" layoutY="354.0" mnemonicParsing="false" text="Apply" />
+      <Button layoutX="458.0" layoutY="354.0" mnemonicParsing="false" text="Cancel" />
+   </children>
 </AnchorPane>
