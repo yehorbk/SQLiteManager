@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -33,6 +34,8 @@ public class MainWindowController implements Initializable, WindowController {
     private Accordion dbsListAccordion;
     @FXML
     private TabPane mainTabPane;
+    @FXML
+    private TextArea commandTextArea;
     
     
     public void updateUI() {
@@ -109,6 +112,10 @@ public class MainWindowController implements Initializable, WindowController {
 
     ////////////////////////////// FXML METHODS //////////////////////////////
     
+    
+    
+    /// FILE ///
+    
     @FXML
     public void newFileOnBtnClick(ActionEvent actionEvent) {
         String url = "ui/NewFileDialog.fxml";
@@ -140,6 +147,16 @@ public class MainWindowController implements Initializable, WindowController {
     }
     
     @FXML
+    public void exportDbOnBtnClick(ActionEvent actionEvent) {
+        // TODO
+    }
+    
+    @FXML
+    public void saveDbOnBtnClick(ActionEvent actionEvent) {
+        // TODO
+    }
+    
+    @FXML
     public void closeOnBtnClick(ActionEvent actionEvent) {
         Database db = localStorage.getDatabaseByName(currentDbName);
         localStorage.removeDatabase(db);
@@ -150,6 +167,12 @@ public class MainWindowController implements Initializable, WindowController {
     public void exitOnBtnClick(ActionEvent actionEvent) {
         System.exit(0);
     }
+    
+    /// //// ///
+    
+    
+    
+    /// Service ///
     
     @FXML
     public void openCommandLine(ActionEvent actionEvent) {
@@ -182,21 +205,11 @@ public class MainWindowController implements Initializable, WindowController {
         openDialogWindow(url, title);
     }
     
+    /// /////// ///
     
-    @FXML
-    public void createTableAction(ActionEvent actionEvent) {
-        // TODO
-    }
     
-    @FXML
-    public void showTableDataAction(ActionEvent actionEvent) {
-        // TODO
-    }
     
-    @FXML
-    public void closeTableAction(ActionEvent actionEvent) {
-        closeOnBtnClick(actionEvent);
-    }
+    /// Help ///
     
     @FXML
     public void aboutShowPageAction(ActionEvent actionEvent) {
@@ -218,4 +231,49 @@ public class MainWindowController implements Initializable, WindowController {
         String title = "Donate";
         openDialogWindow(url, title);
     }
+    
+    /// //// ///
+    
+    
+    
+    /// Table Action Menu ///
+    
+    @FXML
+    public void createTableAction(ActionEvent actionEvent) {
+        commandTextArea.setText("CREATE TABLE IF NOT EXISTS `...` (`id` INT AUTO_INCREMENT PRIMARY KEY, ...)" );
+    }
+    
+    @FXML
+    public void showTableDataAction(ActionEvent actionEvent) {
+         Database db = localStorage.getDatabaseByName(currentDbName);
+         String data = db.getTablesData();
+         Tab tab = new Tab("table_data(" + currentDbName +")", new TextArea(data));
+         mainTabPane.getTabs().add(tab);
+    }
+    
+    @FXML
+    public void closeTableAction(ActionEvent actionEvent) {
+        closeOnBtnClick(actionEvent);
+    }
+    
+    /// ///// ////// //// ///
+    
+    
+    
+    /// UI Buttons ///
+    
+    @FXML
+    public void refreshBtnOnClick(ActionEvent actionEvent) {
+        updateUI();
+    }
+    
+    @FXML
+    public void runBtnOnClick(ActionEvent actionEvent) {
+        Database db = localStorage.getDatabaseByName(currentDbName);
+        String command = commandTextArea.getText();
+        db.executeCommand(command);
+    }
+    
+    /// // /////// ///
+    
 }
