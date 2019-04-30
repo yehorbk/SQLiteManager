@@ -42,7 +42,7 @@
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#openCommandLine" text="Open Comand Line" />
                 <MenuItem mnemonicParsing="false" onAction="#importSettings" text="Import Settings" />
-                  <MenuItem mnemonicParsing="false" text="Export Settings" />
+                  <MenuItem mnemonicParsing="false" onAction="#exportSettings" text="Export Settings" />
                 <MenuItem mnemonicParsing="false" onAction="#settingsShowPageAction" text="Settings" />
             </items>
          </Menu>
@@ -50,7 +50,7 @@
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#aboutShowPageAction" text="About" />
                 <MenuItem mnemonicParsing="false" onAction="#contactShowPageAction" text="Contact" />
-                <MenuItem mnemonicParsing="false" onAction="#donateShowPageAction" text="Donate"/>
+                <MenuItem mnemonicParsing="false" onAction="#donateShowPageAction" text="Donate" />
             </items>
         </Menu>
         </menus>

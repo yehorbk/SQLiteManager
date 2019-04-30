@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sqlitemanager.controller.MainWindowController;
-import sqlitemanager.controller.NewFileDialogController;
 
 
 public class SQLiteManager extends Application {

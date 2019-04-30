@@ -63,7 +63,7 @@ public class MainWindowController implements Initializable, WindowController {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        localStorage.importSettings();
     }
     
     private void openDialogWindow(String url, String title) {
@@ -174,7 +174,8 @@ public class MainWindowController implements Initializable, WindowController {
     
     @FXML
     public void exportSettings(ActionEvent actionEvent) {
-        
+        System.out.println("Export");
+        localStorage.exportSettings();
     }
     
     @FXML

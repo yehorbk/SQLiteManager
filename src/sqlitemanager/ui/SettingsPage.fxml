@@ -34,10 +34,10 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox layoutX="420.0" layoutY="284.0" prefWidth="150.0" />
-      <RadioButton fx:id="selectDarkTheme" layoutX="37.0" layoutY="85.0" mnemonicParsing="false" text="Dark" />
-      <RadioButton fx:id="selectLightTheme" layoutX="37.0" layoutY="121.0" mnemonicParsing="false" text="Light" />
-      <Button layoutX="523.0" layoutY="354.0" mnemonicParsing="false" text="Apply" />
-      <Button layoutX="458.0" layoutY="354.0" mnemonicParsing="false" text="Cancel" />
+      <ComboBox fx:id="fontStyleComboBox" layoutX="420.0" layoutY="284.0" prefWidth="150.0" />
+      <RadioButton fx:id="selectDarkTheme" layoutX="37.0" layoutY="85.0" mnemonicParsing="false" onAction="#selectDarkThemeAction" text="Dark" />
+      <RadioButton fx:id="selectLightTheme" layoutX="37.0" layoutY="121.0" mnemonicParsing="false" onAction="#selectLightThemeAction" text="Light" />
+      <Button layoutX="523.0" layoutY="354.0" mnemonicParsing="false" onAction="#applyChanges" text="Apply" />
+      <Button layoutX="458.0" layoutY="354.0" mnemonicParsing="false" onAction="#cancelChanges" text="Cancel" />
    </children>
 </AnchorPane>

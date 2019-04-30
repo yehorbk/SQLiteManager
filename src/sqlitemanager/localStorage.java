@@ -1,19 +1,35 @@
 
 package sqlitemanager;
 
+import com.google.gson.Gson;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sqlitemanager.model.Database;
+import sqlitemanager.model.Settings;
 
 public class localStorage {
     
     private static List<Database> databasesList = new ArrayList<>();
-    
+    private static Settings programSettings = new Settings();
     
     public static void putDatabase(Database db) {
         databasesList.add(db);
     }
 
+    public static Settings getProgramSettings() {
+        return programSettings;
+    }
+
+    public static void setProgramSettings(Settings programSettings) {
+        localStorage.programSettings = programSettings;
+    }
+    
     public static List<Database> getDatabasesList() {
         return databasesList;
     }
@@ -31,5 +47,36 @@ public class localStorage {
         return null;
     }
     
+    public static void exportSettings() {
+        File settingsFile = new File("settings.json");
+        Gson gson = new Gson();
+        String jsonObject = gson.toJson(programSettings);
+        System.out.println(jsonObject);
+        FileWriter fw;
+        try {
+            fw = new FileWriter(settingsFile);
+            fw.write(jsonObject);
+            fw.close();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        
+    }
+    
+    public static void importSettings() {
+        File settingsFile = new File("settings.json");
+        String jsonString = "";
+        try {
+            FileReader fr = new FileReader(settingsFile);
+            int line;
+            while ((line = fr.read()) != -1) {
+                jsonString += (char)line;
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        Gson gson = new Gson();
+        Settings settings = gson.fromJson(jsonString, Settings.class);
+    }
     
 }
