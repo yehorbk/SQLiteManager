@@ -11,7 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import sqlitemanager.model.WindowController;
 
-public class DonatePageController implements Initializable, WindowController {
+public class SettingsPageController implements Initializable, WindowController {
     
     private Stage stage;
 

@@ -9,7 +9,7 @@
         <URL value="@/sqlitemanager/style/donatepage.css" />
     </stylesheets>
    <children>
-      <Label layoutX="38.0" layoutY="37.0" onMouseClicked="#copyToBuffer" text="1234 5678 9123 4567" />
-      <Label layoutX="17.0" layoutY="14.0" text="Click on card number to copy" />
+      <Label layoutX="17.0" layoutY="14.0" text="Use this card number to pay:" />
+      <Label layoutX="38.0" layoutY="37.0" text="1234 5678 9123 4567" />
    </children>
 </AnchorPane>
