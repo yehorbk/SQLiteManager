@@ -8,8 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import sqlitemanager.model.Database;
 import sqlitemanager.model.Settings;
 
@@ -77,6 +75,24 @@ public class localStorage {
         }
         Gson gson = new Gson();
         Settings settings = gson.fromJson(jsonString, Settings.class);
+        programSettings = settings;
+    }
+    
+    public static void importSettings(File file) {
+        File settingsFile = file;
+        String jsonString = "";
+        try {
+            FileReader fr = new FileReader(settingsFile);
+            int line;
+            while ((line = fr.read()) != -1) {
+                jsonString += (char)line;
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        Gson gson = new Gson();
+        Settings settings = gson.fromJson(jsonString, Settings.class);
+        programSettings = settings;
     }
     
 }

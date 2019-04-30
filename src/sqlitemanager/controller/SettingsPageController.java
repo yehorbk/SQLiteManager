@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sqlitemanager.controller;
 
 import java.net.URL;
@@ -38,9 +34,7 @@ public class SettingsPageController implements Initializable, WindowController {
     @FXML
     private ComboBox fontStyleComboBox;
     
-    private Double fontSize;
-    private String fontStyle;
-    private String theme;
+    private Settings settings;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -50,38 +44,69 @@ public class SettingsPageController implements Initializable, WindowController {
         selectLightTheme.setToggleGroup(toggleGroup);
         selectLightTheme.selectedProperty().set(true);
         
+        settings = new Settings();
+        settings.setFontSize(localStorage.getProgramSettings().getFontSize());
+        settings.setFontStyle(localStorage.getProgramSettings().getFontStyle());
+        settings.setTheme(localStorage.getProgramSettings().getTheme());
+        
+        System.out.println(settings.getTheme());
+        System.out.println(settings.getFontStyle());
+        
+        setStyle();
+        
         
         fontSizeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue <?extends Number> observable, Number oldValue, Number newValue) 
             {
-                exampleTextArea.setStyle("-fx-font-size: " + fontSizeSlider.getValue());
-                fontSize = fontSizeSlider.getValue();
+                settings.setFontSize(fontSizeSlider.getValue());
+                setStyle();
             } 
         }); 
         
         
-        fontStyleComboBox.setItems(FXCollections.observableArrayList("Regular", "Bold", "Italic"));
+        fontStyleComboBox.setItems(FXCollections.observableArrayList("Regular", "Bold"));
         fontStyleComboBox.getSelectionModel().select("Regular");
         fontStyleComboBox.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 switch ((String)newValue) {
                     case "Bold":
-                        exampleTextArea.setStyle("-fx-font-weight: bold");
-                        fontStyle = "Bold";
+                        settings.setFontStyle("bold");
+                        setStyle();
                         break;
-                    case "Italic":
-                        exampleTextArea.setStyle("-fx-font-style: italic");
-                        fontStyle = "Italic";
-                        break;    
                     default:
-                        exampleTextArea.setStyle("-fx-font-weight: regular");
-                        fontStyle = "Regular";
+                        settings.setFontStyle("regular");
+                        setStyle();
                 }
             }
         });
         
-    }    
+        switch(settings.getTheme()) {
+            case "Dark":
+                selectDarkTheme.selectedProperty().set(true);
+                break;
+            case "Light":
+                selectLightTheme.selectedProperty().set(true);
+                break;
+        }
+        
+        switch(settings.getFontStyle()) {
+            case "regular": 
+               fontStyleComboBox.getSelectionModel().select("Regular");
+               break;
+            case "bold":
+               fontStyleComboBox.getSelectionModel().select("Bold");
+               break;
+        }
+        
+        fontSizeSlider.setValue(settings.getFontSize());
+        
+    }
+
+    private void setStyle() {
+        exampleTextArea.setStyle("-fx-font-size: " + settings.getFontSize() + "; " +
+                "-fx-font-weight: " + settings.getFontStyle() + "; ");
+    }
 
     @Override
     public void setStage(Stage stage) {
@@ -90,23 +115,18 @@ public class SettingsPageController implements Initializable, WindowController {
     
     @FXML
     public void selectDarkThemeAction(ActionEvent actionEvent) {
-        this.theme = "Dark";
-        System.out.println("Dark");
+        settings.setTheme("Dark");
     }
     
     @FXML
     public void selectLightThemeAction(ActionEvent actionEvent) {
-        this.theme = "Light";
-        System.out.println("Light");
+        settings.setTheme("Light");
     }
     
     @FXML
     public void applyChanges(ActionEvent actionEvent) {
-        Settings programSettings = localStorage.getProgramSettings();
-        programSettings.setFontSize(fontSize);
-        programSettings.setFontStyle(fontStyle);
-        programSettings.setTheme(theme);
-        //localStorage.setProgramSettings(programSettings);
+        localStorage.setProgramSettings(settings);
+        localStorage.exportSettings();
         this.stage.close();
     }
     

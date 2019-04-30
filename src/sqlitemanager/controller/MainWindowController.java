@@ -49,9 +49,7 @@ public class MainWindowController implements Initializable, WindowController {
                     openTab(event);
                 }
             });
-        }
-        
-        
+        }  
     }
     
     private Stage stage;
@@ -168,13 +166,12 @@ public class MainWindowController implements Initializable, WindowController {
         ExtensionFilter filter = new ExtensionFilter("JSON files", "*.json");
         File file = null;
         if ((file = openFileChooser(title, filter)) != null) {
-            // TODO
+            localStorage.importSettings(file);
         }
     }
     
     @FXML
     public void exportSettings(ActionEvent actionEvent) {
-        System.out.println("Export");
         localStorage.exportSettings();
     }
     
