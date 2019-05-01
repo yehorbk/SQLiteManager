@@ -1,4 +1,3 @@
-
 package sqlitemanager;
 
 import java.io.File;
@@ -8,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class DatabaseReference {
     
@@ -54,20 +51,25 @@ public class DatabaseReference {
     }
     
     public ArrayList<String> getTableData(String tableName) {
-        
         try {
             Statement statement = connection.createStatement();
+            int count = columnsCount(tableName);
             ResultSet result = statement.executeQuery("SELECT * FROM " + tableName);
             ArrayList<String> list = new ArrayList<>();
             while (result.next()) {
-                list.add("" + result.getString(2) + " " + result.getInt(3));
+                String item = "";
+                for (int i = 2; i <= count; i++) {
+                    item += " " + result.getString(i);
+                }
+                list.add(item);
             }
+            
+            // Question
             return list;
         } catch (SQLException ex) {
             System.out.println(ex);
             return null;
         }
-        
     }
     
     public ArrayList<String> getTables() {
@@ -82,6 +84,22 @@ public class DatabaseReference {
         } catch (SQLException ex) {
             System.out.println(ex);
             return null;
+        }
+    }
+    
+    private int columnsCount(String tableName) {
+        try {
+            
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("PRAGMA table_info(" + tableName + ")");
+            ArrayList<String> list = new ArrayList<>();
+            while (result.next()) {
+                list.add("" + result.getString(1));
+            }
+            return list.size();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return -1;
         }
     }
 }
