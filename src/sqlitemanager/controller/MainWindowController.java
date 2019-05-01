@@ -6,6 +6,8 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -36,6 +38,8 @@ public class MainWindowController implements Initializable, WindowController {
     private TabPane mainTabPane;
     @FXML
     private TextArea commandTextArea;
+    @FXML
+    private TextArea databaseTextArea;
     
     
     public void updateUI() {
@@ -52,7 +56,7 @@ public class MainWindowController implements Initializable, WindowController {
                     openTab(event);
                 }
             });
-        }  
+        }
     }
     
     private Stage stage;
@@ -65,6 +69,16 @@ public class MainWindowController implements Initializable, WindowController {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         localStorage.importSettings();
+        databaseTextArea = null;
+        mainTabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
+            @Override
+            public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
+                String tabName = newValue.getText();
+                currentDbName = tabName;
+                databaseTextArea = (TextArea)newValue.getContent();
+            }
+        });
+        
     }
     
     private void openDialogWindow(String url, String title) {
@@ -105,7 +119,9 @@ public class MainWindowController implements Initializable, WindowController {
         String tabName = ((TitledPane)event.getSource()).getText();
         currentDbName = tabName;
         if(((MouseEvent)event).getButton() != MouseButton.SECONDARY) {
-            mainTabPane.getTabs().add(new Tab(tabName));
+            databaseTextArea = new TextArea();
+            Tab tab = new Tab(tabName, databaseTextArea);
+            mainTabPane.getTabs().add(tab);
         }
     }
 
@@ -272,6 +288,7 @@ public class MainWindowController implements Initializable, WindowController {
         Database db = localStorage.getDatabaseByName(currentDbName);
         String command = commandTextArea.getText();
         db.executeCommand(command);
+        databaseTextArea.setText(databaseTextArea.getText() + "Result");
     }
     
     /// // /////// ///
