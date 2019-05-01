@@ -47,6 +47,7 @@ public class MainWindowController implements Initializable, WindowController {
     
     public void updateUI() {
         dbsListAccordion.getPanes().clear();
+        mainTabPane.getTabs().clear();
         
         for (Database db : localStorage.getDatabasesList()) {
             dbsListAccordion.getPanes().add(new TitledPane(db.getName(), null));
