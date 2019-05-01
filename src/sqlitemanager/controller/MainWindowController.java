@@ -22,6 +22,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TitledPane;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
@@ -240,6 +242,59 @@ public class MainWindowController implements Initializable, WindowController {
     }
     
     /// //// ///
+    
+    
+    
+    /// Edit ///
+    
+    @FXML
+    public void undoBtnAction(ActionEvent actionEvent) {
+        // TODO
+    }
+    
+    @FXML
+    public void cutBtnAction(ActionEvent actionEvent) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(commandTextArea.getSelectedText());
+        clipboard.setContent(content);
+        
+        int start = commandTextArea.getSelection().getStart();
+        int end = commandTextArea.getSelection().getEnd();
+        StringBuilder selected = new StringBuilder(commandTextArea.getText());
+        String newText = selected.delete(start, end).toString();
+        commandTextArea.setText(newText);
+    }
+    
+    @FXML
+    public void copyBtnAction(ActionEvent actionEvent) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(commandTextArea.getSelectedText());
+        clipboard.setContent(content);
+
+    }
+    
+    @FXML
+    public void pasteBtnAction(ActionEvent actionEvent) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        String bufferText = clipboard.getString();
+        int cursorPosition = commandTextArea.getSelection().getStart();
+        StringBuilder text = new StringBuilder(commandTextArea.getText());
+        text.insert(cursorPosition, bufferText);
+        commandTextArea.setText(text.toString());
+    }
+    
+    @FXML
+    public void deleteBtnAction(ActionEvent actionEvent) {
+        int start = commandTextArea.getSelection().getStart();
+        int end = commandTextArea.getSelection().getEnd();
+        StringBuilder selected = new StringBuilder(commandTextArea.getText());
+        String newText = selected.delete(start, end).toString();
+        commandTextArea.setText(newText);
+    }
+    
+    // //// ///
     
     
     

@@ -34,11 +34,11 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-                <MenuItem mnemonicParsing="false" text="Undo" />
-                <MenuItem mnemonicParsing="false" text="Cut" />
-                <MenuItem mnemonicParsing="false" text="Copy" />
-                <MenuItem mnemonicParsing="false" text="Paste" />
-                <MenuItem mnemonicParsing="false" text="Delete" />
+                <MenuItem mnemonicParsing="false" onAction="#undoBtnAction" text="Undo" />
+                <MenuItem mnemonicParsing="false" onAction="#cutBtnAction" text="Cut" />
+                <MenuItem mnemonicParsing="false" onAction="#copyBtnAction" text="Copy" />
+                <MenuItem mnemonicParsing="false" onAction="#pasteBtnAction" text="Paste" />
+                <MenuItem mnemonicParsing="false" onAction="#deleteBtnAction" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Service">
