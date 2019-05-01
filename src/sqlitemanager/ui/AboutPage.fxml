@@ -11,7 +11,7 @@
         <URL value="@/sqlitemanager/style/aboutpage.css" />
     </stylesheets>
    <children>
-      <TextArea editable="false" layoutX="14.0" layoutY="42.0" prefHeight="220.0" prefWidth="305.0" text="Product Version&#10;SQLite Manage v.1.0&#10;&#10;Build Information&#10;Version 10.0.0&#10;Date: 2018-06-05&#10;Java Version: 10.0.1+10, Oracle Corporation&#10;&#10;Operating System&#10;Windows 10, amd64, 10.0&#10;&#10;Copyright (c) 2015-2018, Yehor Inc." />
+      <TextArea editable="false" layoutX="14.0" layoutY="42.0" prefHeight="220.0" prefWidth="305.0" text="Product Version&#10;SQLite Manager v.1.0&#10;&#10;Build Information&#10;Version 10.0.0&#10;Date: 2018-06-05&#10;Java Version: 10.0.1+10, Oracle Corporation&#10;&#10;Operating System&#10;Windows 10, amd64, 10.0&#10;&#10;Copyright (c) 2015-2018, Yehor Inc." />
       <Label layoutX="14.0" layoutY="7.0" prefHeight="29.0" prefWidth="160.0" text="About SQLite Manager">
          <font>
             <Font size="14.0" />

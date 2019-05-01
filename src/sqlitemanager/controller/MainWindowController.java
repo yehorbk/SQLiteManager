@@ -254,11 +254,14 @@ public class MainWindowController implements Initializable, WindowController {
     
     @FXML
     public void cutBtnAction(ActionEvent actionEvent) {
+        
+        // Copy
         Clipboard clipboard = Clipboard.getSystemClipboard();
         ClipboardContent content = new ClipboardContent();
         content.putString(commandTextArea.getSelectedText());
         clipboard.setContent(content);
         
+        // Delete
         int start = commandTextArea.getSelection().getStart();
         int end = commandTextArea.getSelection().getEnd();
         StringBuilder selected = new StringBuilder(commandTextArea.getText());
