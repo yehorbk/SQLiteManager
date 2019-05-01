@@ -24,8 +24,8 @@ public class Database {
         return name;
     }
     
-    public void executeCommand(String command) {
-        this.databaseReference.execute(command);
+    public boolean executeCommand(String command) {
+        return this.databaseReference.execute(command);
     }
     
     public String getTablesData() {

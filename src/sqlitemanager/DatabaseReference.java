@@ -41,12 +41,14 @@ public class DatabaseReference {
         }
     }
     
-    public void execute(String command) {
+    public boolean execute(String command) {
         try {
             Statement statement = connection.createStatement();
             statement.execute(command);
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex);
+            return false;
         }
     }
     
@@ -64,7 +66,7 @@ public class DatabaseReference {
                 list.add(item);
             }
             
-            // Question
+            // TODO
             return list;
         } catch (SQLException ex) {
             System.out.println(ex);

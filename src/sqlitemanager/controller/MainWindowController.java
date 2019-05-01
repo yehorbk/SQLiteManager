@@ -172,7 +172,6 @@ public class MainWindowController implements Initializable, WindowController {
             Database database = new Database(file);
             localStorage.putDatabase(database);
             updateUI();
-            // TODO
         }
     }
     
@@ -346,8 +345,9 @@ public class MainWindowController implements Initializable, WindowController {
     public void runBtnOnClick(ActionEvent actionEvent) {
         Database db = localStorage.getDatabaseByName(currentDbName);
         String command = commandTextArea.getText();
-        db.executeCommand(command);
-        databaseTextArea.setText(databaseTextArea.getText() + "\n" + command);
+        if (db.executeCommand(command)) {
+            databaseTextArea.setText(databaseTextArea.getText() + "\n" + command);
+        }
     }
     
     /// // /////// ///
