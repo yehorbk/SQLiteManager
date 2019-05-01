@@ -35,5 +35,10 @@ public class Settings {
         this.theme = theme;
     }
     
+    public String getStyles() {
+        return "-fx-font-size: " + this.getFontSize() + "; " +
+                "-fx-font-weight: " + this.getFontStyle() + "; ";
+    }
+    
     
 }

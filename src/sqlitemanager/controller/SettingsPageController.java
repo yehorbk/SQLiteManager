@@ -104,8 +104,7 @@ public class SettingsPageController implements Initializable, WindowController {
     }
 
     private void setStyle() {
-        exampleTextArea.setStyle("-fx-font-size: " + settings.getFontSize() + "; " +
-                "-fx-font-weight: " + settings.getFontStyle() + "; ");
+        exampleTextArea.setStyle(settings.getStyles());
     }
 
     @Override

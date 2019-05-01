@@ -2,6 +2,8 @@
 package sqlitemanager.controller;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import java.net.URL;
@@ -62,6 +64,7 @@ public class MainWindowController implements Initializable, WindowController {
         Settings settings = localStorage.getProgramSettings();
         System.out.println(settings.getTheme());
         setTheme(settings.getTheme());
+        commandTextArea.setStyle(settings.getStyles());
     }
     
     private Stage stage;
@@ -88,10 +91,7 @@ public class MainWindowController implements Initializable, WindowController {
                 databaseTextArea = (TextArea)newValue.getContent();
             }
         });
-        //updateUI();
     }
-    
-    
     
     private void openDialogWindow(String url, String title) {
         try {
@@ -182,18 +182,49 @@ public class MainWindowController implements Initializable, WindowController {
         ExtensionFilter filter = new ExtensionFilter("SQL files", "*.sql");
         File file = null;
         if ((file = openFileChooser(title, filter)) != null) {
-            // TODO
+            FileReader fr;
+            try {
+                fr = new FileReader(file);
+                String text = "";
+                int line;
+                while ((line = fr.read()) != -1) {
+                    text += (char)line;
+                }
+                commandTextArea.setText(text);
+                fr.close();
+            } catch (IOException ex) {
+                System.out.println(ex);
+            }  
         }
     }
     
     @FXML
     public void exportDbOnBtnClick(ActionEvent actionEvent) {
-        // TODO
+        String title = "Export Database";
+        File file = null;
+        if ((file = openFileChooser(title)) != null) {
+            FileWriter fw;
+            try {
+                fw = new FileWriter(file);
+                fw.write(databaseTextArea.getText());
+                fw.close();
+            } catch (IOException ex) {
+                System.out.println(ex);
+            }  
+        }
     }
     
     @FXML
     public void saveDbOnBtnClick(ActionEvent actionEvent) {
-        // TODO
+        File dbFile = new File(currentDbName + ".sql");
+        FileWriter fw;
+        try {
+            fw = new FileWriter(dbFile);
+            fw.write(databaseTextArea.getText());
+            fw.close();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
     }
     
     @FXML
@@ -235,7 +266,11 @@ public class MainWindowController implements Initializable, WindowController {
     
     @FXML
     public void exportSettings(ActionEvent actionEvent) {
-        localStorage.exportSettings();
+        String title = "Export Settings";
+        File file = null;
+        if ((file = openFileChooser(title)) != null) {
+            localStorage.exportSettings(file);
+        }
     }
     
     @FXML
@@ -312,7 +347,7 @@ public class MainWindowController implements Initializable, WindowController {
         Database db = localStorage.getDatabaseByName(currentDbName);
         String command = commandTextArea.getText();
         db.executeCommand(command);
-        databaseTextArea.setText(databaseTextArea.getText() + "Result");
+        databaseTextArea.setText(databaseTextArea.getText() + "\n" + command);
     }
     
     /// // /////// ///

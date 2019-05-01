@@ -26,8 +26,8 @@
                 <MenuItem mnemonicParsing="false" onAction="#newFileOnBtnClick" text="New" />
                 <MenuItem mnemonicParsing="false" onAction="#openFileOnBtnClick" text="Open" />
                 <MenuItem mnemonicParsing="false" onAction="#importDbOnBtnClick" text="Import" />
-                <MenuItem mnemonicParsing="false" text="Export" />
-                <MenuItem mnemonicParsing="false" text="Save" />
+                <MenuItem mnemonicParsing="false" onAction="#exportDbOnBtnClick" text="Export" />
+                <MenuItem mnemonicParsing="false" onAction="#saveDbOnBtnClick" text="Save" />
                 <MenuItem mnemonicParsing="false" onAction="#closeTableAction" text="Close" />
                 <MenuItem mnemonicParsing="false" onAction="#exitOnBtnClick" text="Exit" />
             </items>

@@ -58,7 +58,21 @@ public class localStorage {
         } catch (IOException ex) {
             System.out.println(ex);
         }
-        
+    }
+    
+    public static void exportSettings(File file) {
+        File settingsFile = file;
+        Gson gson = new Gson();
+        String jsonObject = gson.toJson(programSettings);
+        System.out.println(jsonObject);
+        FileWriter fw;
+        try {
+            fw = new FileWriter(settingsFile);
+            fw.write(jsonObject);
+            fw.close();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
     }
     
     public static void importSettings() {
