@@ -29,6 +29,7 @@ import javafx.stage.Stage;
 import sqlitemanager.localStorage;
 import sqlitemanager.model.Database;
 import sqlitemanager.model.WindowController;
+import sqlitemanager.model.Settings;
 
 public class MainWindowController implements Initializable, WindowController {
     
@@ -57,13 +58,22 @@ public class MainWindowController implements Initializable, WindowController {
                 }
             });
         }
+        
+        Settings settings = localStorage.getProgramSettings();
+        System.out.println(settings.getTheme());
+        setTheme(settings.getTheme());
     }
     
     private Stage stage;
+    private Scene scene;
     private String currentDbName = "";
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+    
+    public void setScene(Scene scene) {
+        this.scene = scene;
     }
 
     @Override
@@ -78,8 +88,10 @@ public class MainWindowController implements Initializable, WindowController {
                 databaseTextArea = (TextArea)newValue.getContent();
             }
         });
-        
+        //updateUI();
     }
+    
+    
     
     private void openDialogWindow(String url, String title) {
         try {
@@ -122,6 +134,18 @@ public class MainWindowController implements Initializable, WindowController {
             databaseTextArea = new TextArea();
             Tab tab = new Tab(tabName, databaseTextArea);
             mainTabPane.getTabs().add(tab);
+        }
+    }
+    
+    private void setTheme(String theme) {
+        switch (theme) {
+            case "Dark":
+                scene.getStylesheets().clear();
+                scene.getStylesheets().add(sqlitemanager.SQLiteManager.class.getResource("style/mainwindow_dark.css").toExternalForm());
+                break;
+            default:
+                scene.getStylesheets().clear();
+                scene.getStylesheets().add(sqlitemanager.SQLiteManager.class.getResource("style/mainwindow.css").toExternalForm());
         }
     }
 

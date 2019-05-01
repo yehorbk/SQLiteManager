@@ -24,17 +24,20 @@ public class SQLiteManager extends Application {
             Parent root = loader.load();
             MainWindowController controller = loader.getController();
 
-            controller.setStage(primaryStage);
             Scene scene = new Scene(root);
-
+            
             scene.getStylesheets().clear();
             scene.getStylesheets().add(this.getClass().getResource("style/mainwindow.css").toExternalForm());
-
+            
+            controller.setScene(scene);
+            controller.setStage(primaryStage);
+            controller.updateUI();
+            
             primaryStage.setTitle("SQLite Manager");
             primaryStage.setScene(scene);
             primaryStage.setFullScreenExitHint("");
             primaryStage.show();
-        
+            
         } catch (IOException e) {
             System.out.println(e);
         }

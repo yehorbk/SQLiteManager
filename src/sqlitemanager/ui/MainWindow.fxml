@@ -102,7 +102,7 @@
       </TabPane>
       <TextArea fx:id="commandTextArea" layoutX="131.0" layoutY="243.0" prefHeight="107.0" prefWidth="461.0" />
       <Label layoutX="131.0" layoutY="226.0" text="Editor Area" />
-      <Button layoutX="549.0" layoutY="361.0" mnemonicParsing="false" onAction="#runBtnOnClick" text="Run" />
-      <Button layoutX="480.0" layoutY="361.0" mnemonicParsing="false" onAction="#refreshBtnOnClick" text="Refresh" />
+      <Button layoutX="549.0" layoutY="361.0" mnemonicParsing="false" onAction="#runBtnOnClick" styleClass="buttons_control" text="Run" />
+      <Button layoutX="480.0" layoutY="361.0" mnemonicParsing="false" onAction="#refreshBtnOnClick" styleClass="buttons_control" text="Refresh" />
    </children>
 </AnchorPane>
