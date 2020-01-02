@@ -89,9 +89,14 @@ public class MainWindowController implements Initializable, WindowController {
         mainTabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
             @Override
             public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
-                String tabName = newValue.getText();
-                currentDbName = tabName;
-                databaseTextArea = (TextArea)newValue.getContent();
+                try {
+                    String tabName = newValue.getText();
+                    currentDbName = tabName;
+                    databaseTextArea = (TextArea)newValue.getContent();
+                } catch(NullPointerException e) {
+                    System.out.println(e);
+                    // TODO: implement logging
+                }
             }
         });
     }
@@ -113,7 +118,6 @@ public class MainWindowController implements Initializable, WindowController {
             stage.showAndWait();
             
             updateUI();
-            
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -125,7 +129,6 @@ public class MainWindowController implements Initializable, WindowController {
         fileChooser.getExtensionFilters().addAll(filters);
         fileChooser.getExtensionFilters().add(
             new ExtensionFilter("All Files", "*.*"));
-        
         File selectedFile = fileChooser.showOpenDialog(this.stage);
         return selectedFile;
     }
