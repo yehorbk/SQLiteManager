@@ -45,6 +45,14 @@ public class localStorage {
         return null;
     }
     
+    private static void setDefaultSettings() {
+        Settings settings = new Settings();
+        settings.setFontSize(18.0);
+        settings.setFontStyle("regular");
+        settings.setTheme("Light");
+        localStorage.setProgramSettings(settings);
+    }
+    
     public static void exportSettings() {
         File settingsFile = new File("settings.json");
         Gson gson = new Gson();
@@ -86,6 +94,8 @@ public class localStorage {
             }
         } catch (Exception ex) {
             System.out.println(ex);
+            localStorage.setDefaultSettings();
+            localStorage.exportSettings();
         }
         Gson gson = new Gson();
         Settings settings = gson.fromJson(jsonString, Settings.class);

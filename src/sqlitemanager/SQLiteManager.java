@@ -23,6 +23,8 @@ public class SQLiteManager extends Application {
             loader.setLocation(this.getClass().getResource("ui/MainWindow.fxml"));
             Parent root = loader.load();
             MainWindowController controller = loader.getController();
+            
+            localStorage.importSettings();
 
             Scene scene = new Scene(root);
             

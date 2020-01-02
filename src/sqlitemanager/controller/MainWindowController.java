@@ -65,7 +65,6 @@ public class MainWindowController implements Initializable, WindowController {
         }
         
         Settings settings = localStorage.getProgramSettings();
-        System.out.println(settings.getTheme());
         setTheme(settings.getTheme());
         commandTextArea.setStyle(settings.getStyles());
     }
