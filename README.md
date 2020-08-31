@@ -17,3 +17,6 @@ It provides a simple implementation of Database Manager, that allows you to work
   - Terminal: launch the `run.*` file. For **MacOS** `.command`, for **UNIX** `.sh`, for **Windows** `.bat`
   
 If you have a troubles with running check your Java Version.
+
+# Author
+**Yehor Bublyk**: [GitHub](https://github.com/yehorbk) • [Twitter](https://twitter.com/yehorbk)
