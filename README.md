@@ -1,7 +1,6 @@
 # SQLiteManager
 Cross-platform SQLite managing application. (JavaFX)
 
-This application was writed for **testing** purposes and **cannot be commercialized**.
 It provides a simple implementation of Database Manager, that allows you to work with SQLite Databases.
 
 ## Specifications
